@@ -8,7 +8,7 @@ use Mix.Config
 config :voting, Voting.Repo,
   username: "postgres",
   password: "postgres",
-  database: "voting_test#{System.get_env("MIX_TEST_PARTITION")}",
+  database: "voting_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
 
