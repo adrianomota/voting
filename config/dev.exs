@@ -2,10 +2,10 @@ use Mix.Config
 
 # Configure your database
 config :voting, Voting.Repo,
-  username: "docker",
-  password: "docker",
+  username: "postgres",
+  password: "postgres",
   database: "voting_dev",
-  hostname: "192.168.15.122",
+  hostname: "localhost",
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
 
