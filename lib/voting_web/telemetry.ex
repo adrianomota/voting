@@ -1,4 +1,8 @@
 defmodule VotingWeb.Telemetry do
+  @moduledoc """
+  Telemetry
+  """
+
   use Supervisor
   import Telemetry.Metrics
 
