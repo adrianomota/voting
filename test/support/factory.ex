@@ -1,8 +1,11 @@
 defmodule Voting.Factory do
+  @moduledoc """
+  Ex-machina Factory
+  """
   # with Ecto
   use ExMachina.Ecto, repo: Voting.Repo
 
-  alias Voting.{Admin}
+  alias Voting.Admin
 
   def admin_factory do
     %Admin{

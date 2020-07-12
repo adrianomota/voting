@@ -1,7 +1,7 @@
 defmodule VotingWeb.Admin.SessionController do
   use VotingWeb, :controller
 
-  alias Voting.{SignInAdmin}
+  alias Voting.SignInAdmin
   alias VotingWeb.Guardian
 
   def sign_in(conn, %{"email" => email, "password" => password}) do

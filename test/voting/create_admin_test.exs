@@ -1,7 +1,7 @@
 defmodule Voting.CreatingAdminTest do
   use Voting.DataCase, async: true
 
-  alias Voting.{CreateAdmin, Admin}
+  alias Voting.{Admin, CreateAdmin}
 
   describe "run/1" do
     test "returns a struct when the params are valid" do
