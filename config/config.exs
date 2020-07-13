@@ -27,10 +27,14 @@ config :logger, :console,
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
-# Guardian JWT
+# Guardian
 config :voting, VotingWeb.Guardian,
   issuer: "voting_web",
   secret_key: "vOhQIYgUKLctXCiQUZ1pSl6thgXN/B+XhGBHDtfR7Aq7QwOdFJDkhYIdtjgS4c1F"
+
+config :voting, VotingWeb.AuthAccessPipeline,
+  module: VotingWeb.Guardian,
+  error_handler: VotingWeb.AuthErrorHandler
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

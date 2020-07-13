@@ -11,11 +11,6 @@ defmodule Voting.SignInAdmin do
     end
   end
 
-  defp verify_password(nil, _) do
-    Bcrypt.no_user_verify()
-    {:error, :email_or_password_invalid}
-  end
-
   defp verify_password(admin, password) do
     case Bcrypt.verify_pass(password, admin.password_hash) do
       true -> {:ok, admin}
