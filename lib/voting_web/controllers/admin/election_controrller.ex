@@ -1,4 +1,4 @@
-defmodule VotingWeb.ElectionController do
+defmodule VotingWeb.Admin.ElectionController do
   use VotingWeb, :controller
 
   alias Voting.CreateElection
@@ -19,9 +19,7 @@ defmodule VotingWeb.ElectionController do
         |> put_status(201)
         |> render("election.json", %{election: election})
 
-      {:error, msg} ->
-        IO.inspect(msg)
-
+      {:error, _} ->
         conn
         |> put_status(422)
         |> json(%{status: "unprocessable entity"})
