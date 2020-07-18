@@ -4,12 +4,10 @@ defmodule VotingWeb.Admin.ElectionController do
   alias Voting.CreateElection
   alias VotingWeb.Guardian.Plug, as: GuardianPlug
 
-
   def index(conn, _params) do
     elections = ListElections.run()
     render(conn, "index.json", %{elections: elections})
   end
-
 
   @spec create(
           Plug.Conn.t(),
