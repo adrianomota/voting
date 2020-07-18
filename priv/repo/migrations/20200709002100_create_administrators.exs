@@ -3,7 +3,7 @@ defmodule Voting.Repo.Migrations.CreateAdministrators do
 
   def change do
     create table(:administrators, primary_key: false) do
-      add :id, :binary_id, primary_key: true
+      add :id, Ecto.UUID, primary_key: true, autogenerate: true
       add :name, :string, null: false
       add :email, :string, null: false
       add :password_hash, :string, null: false

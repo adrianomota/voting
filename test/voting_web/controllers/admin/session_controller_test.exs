@@ -38,5 +38,20 @@ defmodule VotingWeb.Admin.SessionControllerTest do
 
       assert %{"status" => "unauthorized"} = json_response(conn, 401)
     end
+
+    test "return 201 when created a admin", %{conn: conn} do
+      conn =
+        post(conn, "/api/v1/admin/sign_up", %{
+          "admin" => %{
+            "name" => "Foo",
+            "email" => "foo@gmail.com",
+            "password" => "123456"
+          }
+        })
+
+      assert %{
+               "status" => "created"
+             } = json_response(conn, 201)
+    end
   end
 end

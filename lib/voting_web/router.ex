@@ -14,14 +14,13 @@ defmodule VotingWeb.Router do
     pipe_through :api
 
     post("/admin/sign_in", Admin.SessionController, :sign_in)
+    post("/admin/sign_up", Admin.SessionController, :sign_up)
   end
 
   scope "/api/v1", VotingWeb do
     pipe_through :api_as_admin
 
-    post "/elections", Admin.ElectionController, :create
-    put("/elections", Admin.ElectionController, :update)
-
+    resources("/elections", Admin.ElectionController, only: [:index, :create, :update])
     post("/uploads", Admin.UploadController, :create)
   end
 end

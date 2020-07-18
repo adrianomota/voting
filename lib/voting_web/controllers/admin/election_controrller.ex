@@ -1,18 +1,14 @@
 defmodule VotingWeb.Admin.ElectionController do
   use VotingWeb, :controller
 
-  alias Voting.CreateElection
+  alias Voting.{CreateElection, ElectionRepo, ListElections, UpdateElection}
+
   alias VotingWeb.Guardian.Plug, as: GuardianPlug
 
   def index(conn, _params) do
     elections = ListElections.run()
     render(conn, "index.json", %{elections: elections})
   end
-
-  @spec create(
-          Plug.Conn.t(),
-          :invalid | %{optional(:__struct__) => none, optional(atom | binary) => any}
-        ) :: Plug.Conn.t()
 
   def create(conn, params) do
     admin = GuardianPlug.current_resource(conn)
@@ -21,13 +17,13 @@ defmodule VotingWeb.Admin.ElectionController do
     case CreateElection.run(params) do
       {:ok, election} ->
         conn
-        |> put_status(201)
+        |> put_status(:created)
         |> render("election.json", %{election: election})
 
       {:error, _} ->
         conn
-        |> put_status(422)
-        |> json(%{status: "unprocessable entity"})
+        |> put_status(:unprocessable_entity)
+        |> json(%{status: :unprocessable_entity})
     end
   end
 
@@ -40,7 +36,7 @@ defmodule VotingWeb.Admin.ElectionController do
 
       {:error, _} ->
         conn
-        |> put_status(422)
+        |> put_status(:unprocessable_entity)
         |> json(%{status: "unprocessable entity"})
     end
   end
