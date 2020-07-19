@@ -5,12 +5,13 @@ use Mix.Config
 # The MIX_TEST_PARTITION environment variable can be used
 # to provide built-in test partitioning in CI environment.
 # Run `mix help test` for more information.
-config :voting, Voting.Repo,
-  # username: "docker",
-  # password: "docker",
-  # database: "voting_test",
-  # hostname: "192.168.15.122",
-  # pool: Ecto.Adapters.SQL.Sandbox
+
+# config :voting, Voting.Repo,
+# username: "docker",
+# password: "docker",
+# database: "voting_test",
+# hostname: "192.168.15.122",
+# pool: Ecto.Adapters.SQL.Sandbox
 
 config :voting, Voting.Repo,
   username: "postgres",
