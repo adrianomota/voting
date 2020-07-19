@@ -12,6 +12,7 @@ defmodule VotingWeb.Admin.ElectionController do
 
   def create(conn, params) do
     admin = GuardianPlug.current_resource(conn)
+
     params = Map.put(params, "created_by_id", admin.id)
 
     case CreateElection.run(params) do
@@ -20,7 +21,7 @@ defmodule VotingWeb.Admin.ElectionController do
         |> put_status(:created)
         |> render("election.json", %{election: election})
 
-      {:error, _} ->
+      {:error, err} ->
         conn
         |> put_status(:unprocessable_entity)
         |> json(%{status: :unprocessable_entity})
