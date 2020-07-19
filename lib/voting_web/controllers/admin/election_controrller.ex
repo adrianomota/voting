@@ -21,7 +21,7 @@ defmodule VotingWeb.Admin.ElectionController do
         |> put_status(:created)
         |> render("election.json", %{election: election})
 
-      {:error, err} ->
+      {:error, _} ->
         conn
         |> put_status(:unprocessable_entity)
         |> json(%{status: :unprocessable_entity})
