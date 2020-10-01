@@ -37,7 +37,7 @@ config :voting, VotingWeb.AuthAccessPipeline,
   error_handler: VotingWeb.AuthErrorHandler
 
 # AWS
-config :voting, uploads_bucket: "voting-upload", file_module: File
+config :voting, uploads_bucket: "", file_module: File
 
 config :ex_aws,
   region: "us-east-1",
